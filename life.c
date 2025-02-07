@@ -6,7 +6,7 @@ typedef enum {F = 0, T = 1} Bool;
 
 int GetInitialState(int init_state[])
 {
-    
+
 }
 
 void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
@@ -34,9 +34,21 @@ void PlayGameOfLife()
 
 }
 
-int main(){
+int main()
+{
+    char userInput;
     
+    printf("Welcome! Press 'q' to quit or any other key to continue: ");
+    scanf(" %c", &userInput);
 
+
+    while(userInput != 'q')
+    {
+        PlayGameOfLife();
+
+        printf("Press 'q' to quit or any other key to continue: ");
+        scanf(" %c", &userInput);
+    }
 
     return 0;
 }

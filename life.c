@@ -4,9 +4,14 @@
 
 typedef enum {F = 0, T = 1} Bool;
 
-void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
+int GetInitialState(int init_state[])
 {
     
+}
+
+void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
+{
+
 }
 
 int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)

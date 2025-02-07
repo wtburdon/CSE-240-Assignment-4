@@ -4,6 +4,10 @@
 
 typedef enum {F = 0, T = 1} Bool;
 
+void NextGeneration(char board[][NUM_COLS])
+{
+    
+}
 
 void PrintBoard(char board[][NUM_COLS])
 {

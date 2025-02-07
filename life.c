@@ -4,9 +4,14 @@
 
 typedef enum {F = 0, T = 1} Bool;
 
-void NextGeneration(char board[][NUM_COLS])
+int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)
 {
     
+}
+
+void NextGeneration(char board[][NUM_COLS])
+{
+
 }
 
 void PrintBoard(char board[][NUM_COLS])

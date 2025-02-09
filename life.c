@@ -26,12 +26,23 @@ void NextGeneration(char board[][NUM_COLS])
 
 void PrintBoard(char board[][NUM_COLS])
 {
+    for(int row = 0; row < NUM_ROWS; row++)
+    {
+        for(int col = 0; col < NUM_COLS; col++)
+        {
+            printf("%c", board[row][col]);
+        }
+
+        printf("\n");
+    }
 
 }
 
 void PlayGameOfLife()
 {
     //printf("test");
+
+    //char board[NUM_ROWS][NUM_COLS];
 }
 
 int main()

@@ -68,7 +68,49 @@ void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
 
 int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)
 {
+    /*
+    center: [1,1] row, col
+    [row-1, col-1][row-1, col][row-1, col+1]
+    [row, col-1]  [row, col]  [row, col+1]
+    [row+1, col-1][row+1, col][row+1, col+1]
 
+    ---
+    -*-
+    ---
+    
+    */
+
+    int neighbors = 0;
+
+    for(int r = -1; r < 2; r++)
+    {
+
+        for(int c = -1; c < 2; c++)
+        {
+            if(r == 0 && c == 0)
+            {
+                continue;
+            }
+            else if(row+r < 0 || row+r > NUM_ROWS-1)
+            {
+                continue;
+            }
+            else if(col+c < 0 || col+c > NUM_COLS-1)
+            {
+                continue;
+            }
+
+
+            if(board[row+r][col+c] == '*')
+            {
+                neighbors++;
+            }
+
+        }
+
+    }
+
+    return neighbors;
 }
 
 void NextGeneration(char board[][NUM_COLS])
@@ -127,7 +169,7 @@ void PlayGameOfLife()
 
     while(generation < 7)
     {   
-        printf("\ngeneration = %d", generation);
+        printf("\ngeneration = %d\n\n", generation);
         PrintBoard(board);
 
         NextGeneration(board);

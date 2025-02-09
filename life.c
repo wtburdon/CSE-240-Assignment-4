@@ -1,17 +1,58 @@
 #include <stdio.h>
+#include <string.h>
 #define NUM_ROWS 5
 #define NUM_COLS 5
 
 typedef enum {F = 0, T = 1} Bool;
 
+int tokenToInteger(char token[])
+{
+    int multiplier = 1;
+    int res = 0;
+
+    for(int i = strlen(token) - 1; i >= 0; i--)
+    {
+        res += ((token[i] - '0') * multiplier);
+
+        multiplier*=10;
+    }
+
+    return res;
+}
+
 int GetInitialState(int init_state[])
 {
+    //ask numbers, return array
 
+    char initStateInput[50]; //5*5 = 25 possible inputs, sesperated by 24 commas
+
+    printf("Enter the offsets for the live cells: \n");
+    scanf(" %s", initStateInput);
+
+    char* token = strtok(initStateInput, " ,");
+
+    while(token != NULL)
+    {   
+        int index = tokenToInteger(token);
+
+        if(index >= 0 && index < 25)
+        {
+            
+            init_state[index] = 1;
+        }
+
+        token = strtok(NULL, " ,");
+    }
+
+    for(int i = 0; i < 25; i++)
+    {
+        printf("Index %d : %d \n", i, init_state[i]);
+    }
 }
 
 void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
 {
-
+    // take array of numbers, convert to indexes, set indexs to char '*'
 }
 
 int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)
@@ -40,9 +81,11 @@ void PrintBoard(char board[][NUM_COLS])
 
 void PlayGameOfLife()
 {
-    //printf("test");
-
-    //char board[NUM_ROWS][NUM_COLS];
+    char board[NUM_ROWS][NUM_COLS] = {{'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}};
+    
+    int init[NUM_ROWS * NUM_COLS] = {0};
+    GetInitialState(init);
+    
 }
 
 int main()

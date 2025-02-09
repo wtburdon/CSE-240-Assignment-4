@@ -31,7 +31,7 @@ void PrintBoard(char board[][NUM_COLS])
 
 void PlayGameOfLife()
 {
-
+    //printf("test");
 }
 
 int main()
@@ -40,7 +40,7 @@ int main()
     
     printf("Welcome! Press 'q' to quit or any other key to continue: ");
     scanf(" %c", &userInput);
-
+    printf("\n");
 
     while(userInput != 'q')
     {
@@ -48,7 +48,10 @@ int main()
 
         printf("Press 'q' to quit or any other key to continue: ");
         scanf(" %c", &userInput);
+        printf("\n");
     }
+
+    printf("Bye bye!");
 
     return 0;
 }

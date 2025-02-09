@@ -73,7 +73,31 @@ int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)
 
 void NextGeneration(char board[][NUM_COLS])
 {
+    //copy of board
+    char prev_board[NUM_ROWS][NUM_COLS];
 
+    memcpy(prev_board, board, sizeof(prev_board));
+
+    for(int row = 0; row < NUM_ROWS; row++)
+    {
+
+        for(int col = 0; col < NUM_COLS; col++)
+        {
+
+            int neighbors = CountLiveNeighbors(prev_board, row, col);
+            
+            if(prev_board[row][col] == '*' && (neighbors < 2 || neighbors > 3))
+            {
+                board[row][col] = '-';
+            }
+            else if(prev_board[row][col] == '-' && neighbors == 3)
+            {
+                board[row][col] = '*';
+            }
+
+        }
+
+    }
 }
 
 void PrintBoard(char board[][NUM_COLS])
@@ -110,7 +134,7 @@ void PlayGameOfLife()
 
         generation++;
     }
-    
+
     printf("Good life!\n");
 
 }

@@ -110,6 +110,8 @@ void PlayGameOfLife()
 
         generation++;
     }
+    
+    printf("Good life!\n");
 
 }
 

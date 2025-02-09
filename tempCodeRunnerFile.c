@@ -1,2 +1,1 @@
-
-int main(){
+init_state

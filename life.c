@@ -23,7 +23,7 @@ int tokenToInteger(char token[])
 int GetInitialState(int init_state[])
 {
     //ask numbers, return array
-
+    int num_alive = 0;
     char initStateInput[50]; //5*5 = 25 possible inputs, sesperated by 24 commas
 
     printf("Enter the offsets for the live cells: \n");
@@ -33,21 +33,21 @@ int GetInitialState(int init_state[])
 
     while(token != NULL)
     {   
+        // printf("Token: %s\n", token);
         int index = tokenToInteger(token);
 
+        // printf("Converted Index: %d\n", index);
+
         if(index >= 0 && index < 25)
-        {
-            
+        {   
+            num_alive++;
             init_state[index] = 1;
         }
 
         token = strtok(NULL, " ,");
     }
 
-    for(int i = 0; i < 25; i++)
-    {
-        printf("Index %d : %d \n", i, init_state[i]);
-    }
+    return num_alive;
 }
 
 void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
@@ -82,10 +82,13 @@ void PrintBoard(char board[][NUM_COLS])
 void PlayGameOfLife()
 {
     char board[NUM_ROWS][NUM_COLS] = {{'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-'}};
-    
     int init[NUM_ROWS * NUM_COLS] = {0};
-    GetInitialState(init);
+
+    int num_alive = GetInitialState(init);
+
     
+    //SetInitialState(board, init, num_alive);
+
 }
 
 int main()

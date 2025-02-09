@@ -53,6 +53,17 @@ int GetInitialState(int init_state[])
 void SetInitialState(char board[][NUM_COLS], int init_state[], int num_alive)
 {
     // take array of numbers, convert to indexes, set indexs to char '*'
+
+    for(int i = 0; i < NUM_ROWS * NUM_COLS; i++)
+    {
+        if(init_state[i])
+        {
+            int row = i / NUM_ROWS;
+            int col = i % NUM_COLS;
+
+            board[row][col] = '*';
+        }
+    }
 }
 
 int CountLiveNeighbors(char board[][NUM_COLS], int row, int col)
@@ -86,8 +97,19 @@ void PlayGameOfLife()
 
     int num_alive = GetInitialState(init);
 
-    
-    //SetInitialState(board, init, num_alive);
+    SetInitialState(board, init, num_alive);
+
+    int generation = 0;
+
+    while(generation < 7)
+    {   
+        printf("\ngeneration = %d", generation);
+        PrintBoard(board);
+
+        NextGeneration(board);
+
+        generation++;
+    }
 
 }
 
